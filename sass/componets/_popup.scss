@@ -1,0 +1,126 @@
+.popup{
+  height: 100vh;
+  width: 100%;
+  background:rgba($color-black, $alpha: .8);
+  position:fixed;
+  z-index:1000;
+  top: 0;
+  left: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s;
+
+  
+
+@supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)){
+ -webkit-backdrop-filter: blur(10px);
+ backdrop-filter: blur(10px);
+ background:rgba($color-black, $alpha: .2);} //we have to put supports becuse in chrome not working in google chrome we can also use not only blur but other as sepia ecc
+
+  //Open PopUP
+  &:target{
+    opacity: 1;
+    visibility: visible;
+    
+  }
+  &:target &__content{
+    opacity: 1;
+    transform: translate(-50%,-50%) scale(1);
+    
+   
+    
+  }
+
+
+ &__close{
+   &:link,
+   &:visited{
+     position: absolute;
+     top: 2.5rem;
+     right: 2.5rem;
+     color: $color-primary;
+     border: 1px $color-primary-light solid;
+     background-color: $color-white;
+     font-size: 3rem;
+     text-decoration: none;
+     display: inline-block;
+     border-radius: 50px;
+     width: 5rem;
+     text-align: center;
+     transition: all .2s;
+
+
+   }
+
+   &:hover{
+     color:$color-white;
+     border: 1px $color-primary solid;
+     background-color: $color-primary;
+
+   }
+ }
+
+  &__content{
+    position: absolute;
+    width: 75%;
+    @include center;
+    background-color: $color-white;
+    box-shadow:0 2rem 4rem rgba($color-black, $alpha: 0.2);
+    border-radius: 3px;
+    display: table;
+    overflow: hidden;
+    opacity: 0;
+    transition: all .4s .2s;
+    transform: translate(-50%,-50%) scale(.4);
+    
+  }
+
+  &__left{
+  width: 33.33333%;
+  //float: left;
+  display: table-cell;
+
+  @include respond (tab-port){
+    display: flex;
+    
+  }
+
+}
+
+&__right{
+  width: 66.666%;
+  //float: left;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 3rem 5rem;
+
+  @include respond (tab-port){
+    display: block;
+  }
+  }
+
+  &__img{
+  width: 100%;
+  display:block;
+ @include respond(tab-port){
+   display: inline;
+ }
+
+  }
+
+  &__text{
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+
+    column-count: 2;
+    column-gap: 3rem;
+    column-rule: 1px solid rgba($color-grey-dark, $alpha: .2);
+
+    --webkit-hyphens:auto;
+    hyphens: auto;// using for divide words when ther arent enough space
+  }
+
+
+
+}  

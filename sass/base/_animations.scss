@@ -1,0 +1,47 @@
+@keyframes moveinleft{
+  0% /*start*/{
+opacity: 0;
+transform: translateX(-10rem);
+}
+
+80%{
+transform: translateX(1rem);
+}
+
+100%{
+opacity: 1;
+transform: translateX(0);
+}
+
+}
+
+@keyframes moveinright{
+  0% /*start*/{
+opacity: 0;
+transform: translateX(10rem);
+}
+
+80%{
+transform: translateX(-1rem);
+}
+
+100%{
+opacity: 1;
+transform: translateX(0);
+}
+
+}
+
+@keyframes moveinbotton{
+  0% /*start*/{
+opacity: 0;
+transform: translatey(3rem);
+
+}
+
+100%{
+opacity: 1;
+transform: translatey(0);
+}
+
+}

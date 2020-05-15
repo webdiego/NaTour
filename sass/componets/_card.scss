@@ -1,0 +1,238 @@
+.card{
+  //FUNTIONALITY
+  perspective: 150rem;
+  -moz-perspective: 150rem;//have to be higher, low become crazy//
+  position: relative;
+  height: 50rem;
+
+
+  &__side{
+    background-color: red;
+    height: 50rem;
+    transition: .8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, $alpha: .15);
+
+    &--front{
+      background-color:$color-white;
+    }
+
+    &--back{
+      transform: rotateY(180deg);
+
+      &-1{
+        background-image:linear-gradient(to right bottom, $color-secondary, $color-secondary-light) ;
+      }
+
+      &-2{
+        background-image:linear-gradient(to right bottom, $color-primary, $color-primary-light) ;
+      }
+
+      &-3{
+        background-image:linear-gradient(to right bottom, $color-tertiary, $color-tertiary-light) ;
+      }
+    }
+  }
+
+
+  &:hover &__side--front{ // when the .card is hover show the__side//
+    transform: rotateY(-180deg);
+
+  }
+
+  &:hover &__side--back{
+    transform: rotateY(0);
+  }
+
+
+  //Front SIDE STYLING
+  &__picture{
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+    -webkit-clip-path:polygon( 0 0,100% 0, 100% 85% ,0 100%);
+    clip-path:polygon( 0 0,100% 0, 100% 85% ,0 100%);
+    position: relative;
+
+    &--1{
+      background-image:linear-gradient(to right bottom, $color-secondary, $color-secondary-light), 
+      url(../img/nat-5.jpg);
+
+    }
+    &--2{
+      background-image:linear-gradient(to right bottom, $color-primary, $color-primary-light), 
+      url(../img/nat-6.jpg);
+
+    }
+    &--3{
+      background-image:linear-gradient(to right bottom, $color-tertiary, $color-tertiary-light), 
+      url(../img/nat-7.jpg);
+
+    }
+
+  }
+
+  &__heading{
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: $color-white;
+    text-align: right;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 75% ;
+
+
+  }
+ &__heading-span{
+   padding: 1rem 1.5rem;
+   -webkit-box-decoration-break: clone;
+   box-decoration-break: clone; //different padding in two different line
+
+  &-1{
+    background-image: linear-gradient(to right bottom,
+    rgba($color-secondary, .85),
+    rgba($color-secondary-light, .85));
+  }
+
+  &-2{
+    background-image: linear-gradient(to right bottom,
+    rgba($color-primary, .85),
+    rgba($color-primary-light, .85));
+  }
+  &-3{
+    background-image: linear-gradient(to right bottom,
+    rgba($color-tertiary, .85),
+    rgba($color-tertiary-light, .85));
+  }
+ }
+
+
+  &__details{
+    padding: 1.7rem;
+
+    ul{
+      width: 85%;
+      list-style: none;
+      
+      li{
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 0 auto;
+        padding: 1rem;
+
+        &:not(:last-child){  
+        border-bottom: 1px $color-grey-light-2 solid;
+       }
+
+      }
+    
+    }
+
+    @include respond(phone){
+      padding: 0;
+      ul {
+        width: 65%;
+      }
+  }
+}
+
+ //FRONT SIDE STYLING
+
+  &__cta{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 90%;
+    text-align: center;
+  }
+
+  &__price-box{
+    text-align: center;
+    color: $color-white;
+    margin-bottom: 8rem;
+   
+  }
+
+  &__price-only{
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    
+  }
+
+  &__price-value{
+    font-size: 6rem;
+    font-weight: 100;
+  }
+
+
+
+  @media only screen and ( max-width: 37.5em),
+  only screen and (hover:none){
+   
+     height: 77rem;
+     border-radius: 3px;
+     background-color: $color-white;
+     box-shadow: 0 1.5rem 4rem rgba($color-black, $alpha: .15);
+
+     
+
+      &__side{
+
+        height:auto;
+        position: relative;
+        box-shadow: none;
+        
+        
+        
+        &--back{
+          transform:rotateY(0) ;
+          clip-path:
+          polygon(0 15%,100% 0 , 100% 100%,0 100%);
+          top: -6rem;
+        
+         }
+        }
+      
+    
+    
+      &:hover &__side--front{ // when the .card is hover show the__side//
+        transform: rotateY(0);
+    
+      }
+    
+     //Back SIDE STYLING
+    
+      &__cta{
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: translate(0);
+        width: 100%;
+        height: 30rem;
+      }
+    
+      &__price-box{
+        margin-bottom: 1rem;
+        padding-top: 4rem;
+      }
+    
+      &__price-value{
+        font-size: 6rem;
+        margin: auto;
+      }
+    }
+    
+    
+}
+
+
+
